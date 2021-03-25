@@ -23,6 +23,17 @@ class intersection_four:
         self.s_rate_sum = sum(self.s_rate)
         self.n_rate_sum = sum(self.n_rate)
 
+        if self.output_e is not None:
+            self.output_e.input_cell=0
+        if self.output_w is not None:
+            self.output_w.input_cell = 0
+
+        if self.output_s is not None:
+            self.output_s.input_cell = 0
+
+        if self.output_n is not None:
+            self.output_n.input_cell = 0
+
         if self.input_n is not None:  # 北进口
             self.input_n.output_cell = 0
             if self.output_e is not None:  # 左
@@ -35,7 +46,7 @@ class intersection_four:
                                  self.output_e.N_ik[0] - self.output_e.n_ik[0])],
                         axis=0).astype(int)
                     self.input_n.output_cell += self.input2output
-                    self.output_e.input_cell = self.input2output
+                    self.output_e.input_cell += self.input2output
 
             if self.output_s is not None:  # 直
                 if self.n_rate[1] > 0:
@@ -48,7 +59,7 @@ class intersection_four:
                                  self.output_s.N_ik[0] - self.output_s.n_ik[0])],
                         axis=0).astype(int)
                     self.input_n.output_cell += self.input2output
-                    self.output_s.input_cell = self.input2output
+                    self.output_s.input_cell += self.input2output
 
             if self.output_w is not None:  # 右
                 if self.n_rate[2] > 0:
@@ -61,7 +72,7 @@ class intersection_four:
                                  self.output_w.N_ik[0] - self.output_w.n_ik[0])],
                         axis=0).astype(int)
                     self.input_n.output_cell += self.input2output
-                    self.output_w.input_cell = self.input2output
+                    self.output_w.input_cell += self.input2output
 
         if self.input_s is not None:  # 南进口
             self.input_s.output_cell = 0
@@ -76,7 +87,7 @@ class intersection_four:
                                  self.output_w.N_ik[0] - self.output_w.n_ik[0])],
                         axis=0).astype(int)
                     self.input_s.output_cell += self.input2output
-                    self.output_w.input_cell = self.input2output
+                    self.output_w.input_cell += self.input2output
 
             if self.output_n is not None:  # 直
                 if self.s_rate[1] > 0:
@@ -89,7 +100,7 @@ class intersection_four:
                                  self.output_n.N_ik[0] - self.output_n.n_ik[0])],
                         axis=0).astype(int)
                     self.input_s.output_cell += self.input2output
-                    self.output_n.input_cell = self.input2output
+                    self.output_n.input_cell += self.input2output
 
             if self.output_e is not None:  # 右
                 if self.s_rate[2] > 0:
@@ -102,7 +113,7 @@ class intersection_four:
                                  self.output_e.N_ik[0] - self.output_e.n_ik[0])],
                         axis=0).astype(int)
                     self.input_s.output_cell += self.input2output
-                    self.output_e.input_cell = self.input2output
+                    self.output_e.input_cell += self.input2output
 
         if self.input_w is not None:  # 西进口
             self.input_w.output_cell = 0
@@ -117,7 +128,7 @@ class intersection_four:
                                  self.output_n.N_ik[0] - self.output_n.n_ik[0])],
                         axis=0).astype(int)
                     self.input_w.output_cell += self.input2output
-                    self.output_n.input_cell = self.input2output
+                    self.output_n.input_cell += self.input2output
 
             if self.output_e is not None:  # 直
                 if self.w_rate[1] > 0:
@@ -130,7 +141,7 @@ class intersection_four:
                                  self.output_e.N_ik[0] - self.output_e.n_ik[0])],
                         axis=0).astype(int)
                     self.input_w.output_cell += self.input2output
-                    self.output_e.input_cell = self.input2output
+                    self.output_e.input_cell += self.input2output
 
             if self.output_s is not None:  # 右
                 if self.w_rate[2] > 0:
@@ -143,7 +154,7 @@ class intersection_four:
                                  self.output_s.N_ik[0] - self.output_s.n_ik[0])],
                         axis=0).astype(int)
                     self.input_w.output_cell += self.input2output
-                    self.output_s.input_cell = self.input2output
+                    self.output_s.input_cell += self.input2output
 
         if self.input_e is not None:  # 东进口
             self.input_e.output_cell = 0
@@ -158,7 +169,7 @@ class intersection_four:
                                  self.output_s.N_ik[0] - self.output_s.n_ik[0])],
                         axis=0).astype(int)
                     self.input_e.output_cell += self.input2output
-                    self.output_s.input_cell = self.input2output
+                    self.output_s.input_cell += self.input2output
 
             if self.output_w is not None:  # 直
                 if self.e_rate[1] > 0:
@@ -171,7 +182,7 @@ class intersection_four:
                                  self.output_w.N_ik[0] - self.output_w.n_ik[0])],
                         axis=0).astype(int)
                     self.input_e.output_cell += self.input2output
-                    self.output_w.input_cell = self.input2output
+                    self.output_w.input_cell += self.input2output
 
             if self.output_n is not None:  # 右
                 if self.e_rate[2] > 0:
@@ -184,7 +195,7 @@ class intersection_four:
                                  self.output_n.N_ik[0] - self.output_n.n_ik[0])],
                         axis=0).astype(int)
                     self.input_e.output_cell += self.input2output
-                    self.output_n.input_cell = self.input2output
+                    self.output_n.input_cell += self.input2output
 
 
 class road:
@@ -283,7 +294,7 @@ for road_set in road_sets:
     road_set["Q_ik"] = np.array([7] * road_set["length"])
     road_set["l_i"] = np.array([70] * (road_set["length"] - 1) + [road_set["l_i_last"]])
     # road_set["N_ik"] = road_set["Q_ik"] / 70 * road_set["l_i"].astype(int)
-    road_set["N_ik"] = 0.399 * road_set["l_i"].astype(int)
+    road_set["N_ik"] = (0.399 * road_set["l_i"]).astype(int)
 
 road_in = road(road_sets[0])
 road_in.N_ik[0]=10000#让输入路段缓存量很大，防止堵塞再路段外
